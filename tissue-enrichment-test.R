@@ -105,7 +105,7 @@ perform_contamination_test=function(nm,columns,stages,gaps_row,gaps_col,output_n
     par(mar=c(5,5,3,2),cex=1,lwd=2)
     plot(c(-10,-10),xlim=c(1,length(thresh)),ylim=c(0,1),xaxt="n",yaxt="n",xlab="Expression Threshold (Percentile)",ylab="Percent of Genes Expressed",bty="o")
     
-    axis(1,c(1,seq(round(length(thresh)/4,0),length(thresh),length.out = 4)),c("",seq(75,0,length.out = 4)),lwd = 2)
+    axis(1,c(1,seq(round(length(thresh)/4,0),length(thresh),length.out = 4)),c(95,seq(75,0,length.out = 4)),lwd = 2)
     if(axes=='xy')axis(2,seq(0,1,.1),seq(0,100,10),las=2,lwd = 2,hadj = .7)
     random_matrix=matrix(unlist(RANDOM),nrow = length(RANDOM),byrow = T)
     sds=apply(random_matrix,2,function(x)sd(x))
