@@ -9,7 +9,7 @@ The scripts included here enable the user to:
 2. tissue-enrichment-test.R: Perform a statistical enrichment test to determine which tissue types from the atlas are represented in a given transcriptome dataset.
 
 These scripts require the statistical software [R](https://www.r-project.org/) to be installed on your
-computer. Generating tissue-enrichment heatmaps additionally requires the R packages [pheatmap](https://cran.r-project.org/web/packages/pheatmap/index.html)
+computer and added to your PATH. Generating tissue-enrichment heatmaps additionally requires the R packages [pheatmap](https://cran.r-project.org/web/packages/pheatmap/index.html)
 and [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html), which will automatically
 be installed to a local folder the first time tissue-enrichment-test.R is run.
 
@@ -33,6 +33,9 @@ To test a tissue-specific transcriptome from Arabidopsis seeds, you will just ne
 1. a tab-delimited file (ending in '.tsv') of gene expression values, where each row is a unique gene name and each column is one sample (see 'nodine_2012_embryos.tsv' for an example).
 2. a '.description' file of the same name, where each line contains a sample name and the developmental timepoint of that sample (see 'nodine_2012_embryos.description')
 
+If you are interested in testing datasets from other tissues or other species, you will need to find an appropriate
+reference gene expression atlas (see the section below).
+
 ## 1. generate-tissue-specific-genes.R
 This script is used to generate the file 'specific_genes.txt', which contains lists of genes specifically
 expressed in one cell/tissue type at a certain timepoint. You can change the statistical cutoffs by modifying
@@ -55,6 +58,10 @@ to allow the script to identify adjacent timepoints.
 Then replace the content of the two description tables with the appropriate information. If any sample types
 in 'reference_atlas.tsv' should be ignored, add '//exclude' to the description of that timepoint or tissue in the description tables.
 In our example, whole seed samples were excluded because they do not represent a specific tissue within the seed.
+
+By default, adjacent timepoints are merged together to increase statistical power and reduce false positives from 
+sharp temporal changes in gene expression. This can be disabled by changing the option 'flanking' to FALSE under the
+'STATISTICAL THRESHOLDS' heading in the script.
 
 At least two biological replicates are required for each tissue in the reference atlas.
 
