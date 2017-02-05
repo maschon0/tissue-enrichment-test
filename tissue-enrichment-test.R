@@ -18,11 +18,11 @@ trim <- function(x){
 }
 
 test_all_tissues <- function(seqdata,test_timepoint,colorset=tissue_colors){
-# Performs a one-sided KS Test on a set of genes and their expression values for each tissue-enriched gene set.
+# Performs a two-sided Wilcoxon rank-sum  on a population of genes and their expression values for each tissue-enriched gene set.
 # Required inputs: 
 #          seqdata- a named numeric vector containing an expression value for each gene
 #          test_timepoint- developmental timepoint to compare to. Options in 'timepoints.txt'
-	ks.pvals=list()
+	wilcox.pvals=list()
 	percentile_seqdata <- sapply(seqdata,function(x)sum(seqdata<=x)/length(seqdata)*100)
     plot(c(-10,-10),xlim=c(0,100),ylim=c(0,1),las=1,xlab='Percentile',ylab='Cumulative Frequency',main='')
     for(i in 1:length(enriched[[test_timepoint]])){
@@ -41,12 +41,12 @@ test_all_tissues <- function(seqdata,test_timepoint,colorset=tissue_colors){
 	  if(test_pvalue < 10^-50){
 		test_pvalue <- 10^-50
 	  }
-      ks.pvals[[tissue]]=test_pvalue
+      wilcox.pvals[[tissue]]=test_pvalue
       lines(ecdf(values_E),verticals=T,do.points=F,lwd=2,col=tissue_colors[tissue],cex=.5)
     }
 	lines(ecdf(percentile_seqdata),verticals=T,do.points=F,lwd=2)
-	output <- as.numeric(ks.pvals)
-	names(output) <- names(ks.pvals)
+	output <- as.numeric(wilcox.pvals)
+	names(output) <- names(wilcox.pvals)
 	return(output)
 }
 
