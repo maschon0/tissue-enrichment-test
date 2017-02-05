@@ -64,6 +64,8 @@ perform_contamination_test <- function(data_table,columns,timepoints,gaps_row,ga
 	seqdata <- seqdata[names(seqdata) %in% all_tested_genes]
     pvals <- test_all_tissues(seqdata,test_timepoint = timepoints[i])
     pvalue_matrix[names(pvals),i] <- as.numeric(pvals)
+	text(x=-5,y=.975,labels='Enrichment Score',cex=.8,pos=4)
+	legend(x=-5,y=.975,legend=paste(names(pvals),round(-log10(pvals),1),sep=': '),fill=tissue_colors[names(pvals)],bty='n',cex=.8,border=NA)
     title(main=columns[i],cex=.8)
     dev.off()
   }
@@ -97,6 +99,7 @@ tissues_file <- scan("tissues.txt",'character',sep='\n',comment.char = '#')
 tissues_file <- strsplit(tissues_file,'\t')
 tissues <- unlist(lapply(tissues_file,function(x)x[2]))
 names(tissues) <- unlist(lapply(tissues_file,function(x)x[1]))
+tissues <- tissues[grep('//exclude',tissues,invert=T)]
 
 timepoints <- scan("timepoints.txt",'character',sep='\n',comment.char = '#')
 timepoints <- strsplit(timepoints,'\t')
