@@ -1,7 +1,6 @@
 ################
 # USER OPTIONS #
 #############################################################################################################################
-
 filename <- 'nodine_2012_embryos' # Name of the .tsv file containing transcriptomes to be tested. Try also: 'reference_atlas'
 make_heatmaps <- TRUE             # If TRUE, generates a heatmap of p-values for all samples. Requires package 'pheatmap'
 row_breaks <- c(2,5)              # A vector containing row numbers where a gap should be placed on the heatmap
@@ -88,6 +87,13 @@ perform_contamination_test <- function(data_table,columns,timepoints,gaps_row,ga
 #############################################################################################################################
 # LOADING ENVIRONMENT #
 #############################################################################################################################
+args = commandArgs(trailingOnly=TRUE)
+if(length(args)==1){
+	filename = gsub('^datasets/','',gsub('\\.(tsv|description)$','',args[1]))
+}
+if(grepl('/',filename)){
+	stop("Data table must be located in the local directory 'datasets'. Please make a .tsv file and .description file of the dataset. (See README for details)")
+}
 
 if(make_heatmaps==TRUE){
  install.packages(c('RColorBrewer','pheatmap'),lib = 'Rpackages',repos = "http://cran.us.r-project.org")
