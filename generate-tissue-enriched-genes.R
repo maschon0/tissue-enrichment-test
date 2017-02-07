@@ -6,7 +6,7 @@ minimum_fold <- 8              # Smallest fold change to be considered 'enriched
 testing_correction <- 'fdr'    # P-value adjustment for multiple testing correction
 maximum_pvalue <- 0.001        # Largest adjusted P-value to be considered significant in ANOVA
 flanking <- TRUE               # If TRUE, buffers temporal changes by including adjacent developmental timepoints in analysis
-disjoint_sets <- TRUE          # If TRUE, ensures that all tissue-enriched gene sets for each stage are disjoint (non-overlapping)
+disjoint_sets <- FALSE          # If TRUE, ensures that all tissue-enriched gene sets for each stage are disjoint (non-overlapping)
 reference_name <- 'reference_atlas'
 
 #############################################################################################################################
@@ -26,6 +26,13 @@ disjoint <- function(input_list){
 #############################################################################################################################
 # LOADING ENVIRONMENT #
 #############################################################################################################################
+args = commandArgs(trailingOnly=TRUE)
+if(length(args)==1){
+	reference_name = gsub('^datasets/','',gsub('\\.(tsv|description)$','',args[1]))
+}
+if(grepl('/',reference_name)){
+	stop("Reference table must be located in the local directory 'datasets'. Please check setup instructions (See README for details)")
+}
 
 cat('Loading reference atlas...\n')
 reference_atlas <- read.delim(paste("datasets/",reference_name,".tsv",sep=''),header = T,stringsAsFactors = F,comment.char = '#')
