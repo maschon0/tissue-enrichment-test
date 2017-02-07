@@ -98,7 +98,7 @@ if(grepl('/',filename)){
 if(make_heatmaps==TRUE){
 	for(package in c('RColorBrewer','pheatmap')){
 		if(!require(package,lib.loc = 'Rpackages',character.only = TRUE)){
-			install.packages(package,lib = 'Rpackages',repos = "http://cran.us.r-project.org",dependencies = TRUE)
+			install.packages(package,lib = 'Rpackages',repos = "http://cran.us.r-project.org",dependencies = c('Depends'))
 			library(package,lib.loc = 'Rpackages',character.only = TRUE)
 		}
 	}
