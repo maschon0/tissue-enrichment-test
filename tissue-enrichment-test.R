@@ -117,7 +117,7 @@ for(i in 1:length(enriched_genes)){
 }
 rm(enriched_genes,enriched_samples,enriched_genelist)
 
-transcriptomes <- read.delim(paste('datasets/',filename,'.tsv',sep=''),header = T,stringsAsFactors = F)
+transcriptomes <- read.delim(paste('datasets/',filename,'.tsv',sep=''),header = T,stringsAsFactors = F,row.names=1)
 rownames(transcriptomes) <- toupper(trim(rownames(transcriptomes)))
 
 transcriptome_descriptions <- read.delim(paste('datasets/',filename,'.description',sep=''),header = T,stringsAsFactors = F)
