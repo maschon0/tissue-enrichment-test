@@ -5,18 +5,18 @@ Arabidopsis thaliana seeds, using the GEO superseries [GSE12404](https://www.ncb
 as a reference gene expression atlas.  
   
 The scripts included here enable the user to:  
-1. generate-tissue-enriched-genes.R: Use a reference gene expression atlas to identify genes that are spatially and/or temporally expressed in specific tissues or cell types.  
+1. generate-tissue-enriched-genes.R: Use a reference gene expression atlas to identify genes that are spatially and/or temporally expressed in particular tissues or cell types.  
 2. tissue-enrichment-test.R: Perform a statistical enrichment test to determine which tissue types from the atlas are represented in a given transcriptome dataset.  
   
 These scripts require the statistical software [R](https://www.r-project.org/) to be installed on your
 computer and added to your PATH. Generating tissue-enrichment heatmaps additionally requires the R packages [pheatmap](https://cran.r-project.org/web/packages/pheatmap/index.html)
 and [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html), which will automatically
 be installed to a local folder the first time tissue-enrichment-test.R is run.  
-(CAUTION: You may need administrator priveleges for this action. If this causes errors for you, either set the variable 'make_heatmaps' in 'tissue-enrichment-test.R' to FALSE or install the packages yourself and modify lines 19-21 appropriately.)
+(CAUTION: You may need administrator priveleges for this action. If this step causes errors for you, either set the variable 'make_heatmaps' in 'tissue-enrichment-test.R' to FALSE or install the packages yourself and modify lines 92-96 appropriately.)
 
-To download these scripts, run this command in your desired destination folder:
+To download this repository, run this command in your desired destination folder:
 ```shell
-git clone https://gitlab.com/nodine-lab/tissue-enrichment-test.git
+git clone https://github.com/maschon0/tissue-enrichment-test.git
 ```
 
 After cloning the repository, run these commands to make sure everything is set up properly:
