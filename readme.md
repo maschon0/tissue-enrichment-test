@@ -12,7 +12,8 @@ These scripts require the statistical software [R](https://www.r-project.org/) t
 computer and added to your PATH. Generating tissue-enrichment heatmaps additionally requires the R packages [pheatmap](https://cran.r-project.org/web/packages/pheatmap/index.html)
 and [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html), which will automatically
 be installed to a local folder the first time tissue-enrichment-test.R is run.  
-(CAUTION: You may need administrator priveleges for this action. If this step causes errors for you, either set the variable 'make_heatmaps' in 'tissue-enrichment-test.R' to FALSE or install the packages yourself and modify lines 92-96 appropriately.)
+(CAUTION: This will take some time. You may need administrator priveleges for this action.  
+If this step causes errors for you, either set the variable 'make_heatmaps' in 'tissue-enrichment-test.R' to FALSE or install the packages yourself and modify lines 92-96 appropriately.)
 
 To download this repository, run this command in your desired destination folder:
 ```shell
@@ -97,7 +98,7 @@ After running tissue-enrichment-test.R, you should see a collection of new files
 - [data table]_heatmap.pdf: A heatmap showing the enrichment score (-log10 p-value) for each tissue type in each dataset.
 
 Using the example data table 'nodine_2012_embryos', we can see that the 8 samples with washed embryos only show enrichment of
-'EP' (embryo proper) and 'SUS' (suspensor) transcripts, whereas the two unwashed samples are also enriched in transcripts enriched to
+'EP' (embryo proper) and 'SUS' (suspensor) transcripts, whereas the two unwashed samples are also enriched in the transcript populations of
 'PEN' (peripheral endosperm) and 'GSC' (general seed coat).
 
 
