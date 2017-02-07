@@ -49,7 +49,7 @@ test_all_tissues <- function(seqdata,test_timepoint,colorset=tissue_colors){
 	return(output)
 }
 
-perform_contamination_test <- function(data_table,columns,timepoints,gaps_row,gaps_col,output_name,make_heatmaps){
+perform_enrichment_test <- function(data_table,columns,timepoints,gaps_row,gaps_col,output_name,make_heatmaps){
   outputdir <- 'results'
   pvalue_matrix <- matrix(nrow=length(unique(unlist(lapply(enriched,names)))),ncol=length(columns))
   rownames(pvalue_matrix) <- unique(unlist(lapply(enriched,names)))
@@ -128,10 +128,11 @@ rm(enriched_genes,enriched_samples,enriched_genelist)
 
 transcriptomes <- read.delim(paste('datasets/',filename,'.tsv',sep=''),header = T,stringsAsFactors = F,row.names=1)
 rownames(transcriptomes) <- toupper(trim(rownames(transcriptomes)))
+colnames(transcriptomes) <- trim(colnames(transcriptomes))
 
 transcriptome_descriptions <- read.delim(paste('datasets/',filename,'.description',sep=''),header = T,stringsAsFactors = F)
 rownames(transcriptome_descriptions) <- transcriptome_descriptions[,1]
-samples <- rownames(transcriptome_descriptions)
+samples <- trim(rownames(transcriptome_descriptions))
 
 samples <- gsub('-','\\.',samples)
 appended_x <- gsub('^X','',colnames(transcriptomes))
@@ -143,7 +144,7 @@ all_tested_genes <- scan('all_tested_genes.txt','character')
 # EXECUTE TEST #
 #####################################################################################
 
-perform_contamination_test(data_table=transcriptomes,
+perform_enrichment_test(data_table=transcriptomes,
                              columns=samples,
                              timepoints=transcriptome_descriptions[,2],
                              gaps_row=row_breaks,
