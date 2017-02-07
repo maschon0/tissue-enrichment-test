@@ -87,8 +87,8 @@ Rscript tissue-enrichment-test.R nodine_2012_embryos.tsv
 OR
 Rscript tissue-enrichment-test.R datasets/nodine_2012_embryos.tsv
 ```  
-Any data table **must** be in the datasets/ subfolder of this repository, and it **must** have an associated .description file in order for the test to run.  
-Other user options are available to change the appearance of the output plots.  
+This will override whatever default name is stored in the script as 'filename'. Note that any data table **must** be in the datasets/ subfolder of this repository, it **must** have the file extension .tsv, and it **must** have an associated .description file in order for the test to run.  
+Other user options are listed at the top of the script to change the appearance of the output plots.  
   
 ## Results
 After running tissue-enrichment-test.R, you should see a collection of new files in the local folder 'results':  
