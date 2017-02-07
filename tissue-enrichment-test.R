@@ -96,9 +96,12 @@ if(grepl('/',filename)){
 }
 
 if(make_heatmaps==TRUE){
- install.packages(c('RColorBrewer','pheatmap'),lib = 'Rpackages',repos = "http://cran.us.r-project.org")
- library(RColorBrewer,lib.loc = 'Rpackages')
- library(pheatmap,lib.loc = 'Rpackages')
+	for(package in c('RColorBrewer','pheatmap')){
+		if(!require(package,lib.loc = 'Rpackages',character.only = TRUE)){
+			install.packages(package,lib = 'Rpackages',repos = "http://cran.us.r-project.org")
+			library(package,lib.loc = 'Rpackages',character.only = TRUE)
+		}
+	}
 }
 
 tissues_file <- scan("tissues.txt",'character',sep='\n',comment.char = '#')
