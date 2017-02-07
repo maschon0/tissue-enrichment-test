@@ -31,9 +31,9 @@ RNA-seq data from [Nodine & Bartel 2012](https://www.ncbi.nlm.nih.gov/pubmed/222
 both unwashed and washed embryos from early stages of development.
 
 The test defines tissues and timepoints in two separate two-column files:  
-1. 'tissues.txt': column 1 indicates the label used in the file, and column 2 shows the full description of what this label represents
+1. 'tissues.txt': column 1 indicates the label used in the file, and column 2 shows the full description of what this label represents  
 2. 'timepoints.txt': column 1 indicates the order of timepoints in a reference atlas with temporal data; these value must be numeric and starting from 1! Column 2 gives a description of each timepoint, e.g. 'mature green' stage of development or '4 hours after induction'.
-These two files are necessary for interpreting the reference atlas, so if you change the reference atlas you will need to change these files to match.
+These two files are necessary for interpreting the reference atlas, so if you change the reference atlas you will need to change these files to match.  
 
 To test a tissue-specific transcriptome from Arabidopsis seeds, you will just need two files:  
 1. a tab-delimited file (ending in '.tsv') of gene expression values, where each row is a unique gene name and each column is one sample (see 'nodine_2012_embryos.tsv' for an example).  
