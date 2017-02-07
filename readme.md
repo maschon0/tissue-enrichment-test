@@ -78,7 +78,16 @@ type in the transcriptomes provided. Two samples are required to test your sampl
 2. [data table].DESCRIPTION  
 
 To run the script on your datasets, open 'tissue-enrichment-test.R' and under the heading 'USER OPTIONS', change:  
-   filename <- '[data table]'
+   filename <- '[data table]'  
+Alternatively you can provide the name of the data table on the commandline, e.g.  
+```shell
+Rscript tissue-enrichment-test.R nodine_2012_embryos
+OR
+Rscript tissue-enrichment-test.R nodine_2012_embryos.tsv
+OR
+Rscript tissue-enrichment-test.R datasets/nodine_2012_embryos.tsv
+```  
+Any data table **must** be in the datasets/ subfolder of this repository, and it **must** have an associated .description file in order for the test to run.  
 Other user options are available to change the appearance of the output plots.  
   
 ## Results
