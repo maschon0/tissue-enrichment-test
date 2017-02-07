@@ -8,7 +8,7 @@ The scripts included here enable the user to:
 1. generate-tissue-enriched-genes.R: Use a reference gene expression atlas to identify genes that are spatially and/or temporally expressed in particular tissues or cell types.  
 2. tissue-enrichment-test.R: Perform a statistical enrichment test to determine which tissue types from the atlas are represented in a given transcriptome dataset.  
   
-These scripts require the statistical software [R](https://www.r-project.org/) version 3.1.0 or higher to be installed on your
+These scripts require the statistical software [R version 3.1.0 or higher](https://www.r-project.org/) to be installed on your
 computer and added to your PATH. Generating tissue-enrichment heatmaps additionally requires the R packages [pheatmap](https://cran.r-project.org/web/packages/pheatmap/index.html)
 and [RColorBrewer](https://cran.r-project.org/web/packages/RColorBrewer/index.html), which will automatically
 be installed to a local folder the first time tissue-enrichment-test.R is run.  
